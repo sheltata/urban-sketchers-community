@@ -1,442 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Sketchers Paphos — Community Case · Tatiana Shelekhova</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --bg: #f5f3ef;
-  --bg2: #edebe6;
-  --ink: #1a1a18;
-  --ink2: #3a3830;
-  --ink-muted: #7a7668;
-  --orange: #e8720c;
-  --orange-light: #f59a4f;
-  --orange-pale: #fdf0e4;
-  --white: #ffffff;
-  --border: rgba(26,26,24,0.12);
-  --hand: 'Caveat', cursive;
-  --sans: 'DM Sans', sans-serif;
-  --serif: 'Lora', serif;
-}
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Sketchers Paphos — Community Case · Tatiana Shelekhova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #f5f3ef;
+            --bg2: #edebe6;
+            --ink: #1a1a18;
+            --ink2: #3a3830;
+            --ink-muted: #7a7668;
+            --orange: #e8720c;
+            --orange-light: #f59a4f;
+            --orange-pale: #fdf0e4;
+            --white: #ffffff;
+            --border: rgba(26,26,24,0.12);
+            --hand: 'Caveat', cursive;
+            --sans: 'DM Sans', sans-serif;
+            --serif: 'Lora', serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 3rem;
-  background: rgba(245,243,239,0.93);
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid var(--orange);
-}
-.nav-logo img { height: 60px; width: auto; filter: brightness(0); }
-.nav-label { font-family: var(--hand); font-size: 24px; color: var(--ink-muted); }
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(245,243,239,0.93);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--orange);
+        }
+        .nav-logo img { height: 60px; width: auto; filter: brightness(0); }
+        .nav-label { font-family: var(--hand); font-size: 24px; color: var(--ink-muted); }
 
-/* ── HERO ── */
-.hero {
-  max-width: 1100px; margin: 0 auto;
-  padding: 8rem 3rem 5rem;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 5rem;
-  align-items: center;
-}
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--sans); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 1.5rem;
-}
-.hero-tag::before { content: ''; display: block; width: 24px; height: 2px; background: var(--orange); }
-.hero h1 {
-  font-family: var(--hand);
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 1.5rem;
-}
-.hero h1 span { color: var(--orange); }
-.hero-desc {
-  font-size: 16px; color: var(--ink-muted); line-height: 1.85; max-width: 480px;
-}
+        /* ── HERO ── */
+        .hero {
+            max-width: 1100px; margin: 0 auto;
+            padding: 8rem 3rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 5rem;
+            align-items: center;
+        }
+        .hero-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--sans); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+        }
+        .hero-tag::before { content: ''; display: block; width: 24px; height: 2px; background: var(--orange); }
+        .hero h1 {
+            font-family: var(--hand);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero-desc {
+            font-size: 16px; color: var(--ink-muted); line-height: 1.85; max-width: 480px;
+        }
 
-/* Hero card with sketch border effect */
-.hero-card {
-  background: var(--white);
-  border: 2px solid var(--ink);
-  border-radius: 4px;
-  padding: 2rem;
-  position: relative;
-  box-shadow: 5px 5px 0 var(--ink);
-}
-.hero-card::after {
-  content: '';
-  position: absolute;
-  top: 6px; left: 6px; right: -6px; bottom: -6px;
-  border: 1.5px dashed rgba(26,26,24,0.2);
-  border-radius: 4px;
-  z-index: -1;
-}
-.card-row { padding: 0.85rem 0; border-bottom: 1px dashed var(--border); display: flex; flex-direction: column; gap: 3px; }
-.card-row:last-child { border-bottom: none; padding-bottom: 0; }
-.card-row:first-child { padding-top: 0; }
-.card-key { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); }
-.card-val { font-family: var(--hand); font-size: 19px; color: var(--ink); line-height: 1.3; }
+        /* Hero card with sketch border effect */
+        .hero-card {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 5px 5px 0 var(--ink);
+        }
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: -6px; bottom: -6px;
+            border: 1.5px dashed rgba(26,26,24,0.2);
+            border-radius: 4px;
+            z-index: -1;
+        }
+        .card-row { padding: 0.85rem 0; border-bottom: 1px dashed var(--border); display: flex; flex-direction: column; gap: 3px; }
+        .card-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .card-row:first-child { padding-top: 0; }
+        .card-key { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); }
+        .card-val { font-family: var(--hand); font-size: 19px; color: var(--ink); line-height: 1.3; }
 
-/* ── ORANGE STRIPE ── */
-.stripe {
-  background: var(--orange);
-  padding: 3.5rem 3rem;
-  text-align: center;
-}
-.stripe-quote {
-  font-family: var(--hand);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 700;
-  color: var(--white);
-  max-width: 800px;
-  margin: 0 auto 0.75rem;
-  line-height: 1.3;
-}
-.stripe-sub { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+        /* ── ORANGE STRIPE ── */
+        .stripe {
+            background: var(--orange);
+            padding: 3.5rem 3rem;
+            text-align: center;
+        }
+        .stripe-quote {
+            font-family: var(--hand);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 700;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto 0.75rem;
+            line-height: 1.3;
+        }
+        .stripe-sub { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
 
-/* ── SECTIONS ── */
-.section { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; }
-.section + .section { border-top: 1px dashed var(--border); }
+        /* ── SECTIONS ── */
+        .section { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; }
+        .section + .section { border-top: 1px dashed var(--border); }
 
-.s-tag {
-  display: inline-block;
-  font-family: var(--hand); font-size: 17px;
-  background: var(--orange-pale);
-  color: var(--orange);
-  border: 1.5px solid var(--orange-light);
-  padding: 3px 14px; border-radius: 3px;
-  margin-bottom: 1rem;
-}
-h2 {
-  font-family: var(--hand);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 700; line-height: 1.15;
-  color: var(--ink); margin-bottom: 1.5rem;
-}
-.body { font-size: 15px; color: var(--ink-muted); line-height: 1.85; }
-.body + .body { margin-top: 1rem; }
+        .s-tag {
+            display: inline-block;
+            font-family: var(--hand); font-size: 17px;
+            background: var(--orange-pale);
+            color: var(--orange);
+            border: 1.5px solid var(--orange-light);
+            padding: 3px 14px; border-radius: 3px;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-family: var(--hand);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 700; line-height: 1.15;
+            color: var(--ink); margin-bottom: 1.5rem;
+        }
+        .body { font-size: 15px; color: var(--ink-muted); line-height: 1.85; }
+        .body + .body { margin-top: 1rem; }
 
-/* ── METRICS ── */
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-.metric {
-  background: var(--white);
-  border: 2px solid var(--ink);
-  border-radius: 4px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  box-shadow: 4px 4px 0 var(--ink);
-  position: relative; overflow: hidden;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.metric:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
-.metric::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: var(--orange);
-}
-.metric-n {
-  font-family: var(--hand); font-size: 4rem; font-weight: 700;
-  color: var(--orange); line-height: 1; display: block;
-}
-.metric-x { font-size: 2.2rem; }
-.metric-l { font-size: 13px; color: var(--ink-muted); margin-top: 0.4rem; line-height: 1.4; }
+        /* ── METRICS ── */
+        .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+        .metric {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 4px 4px 0 var(--ink);
+            position: relative; overflow: hidden;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .metric:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+        .metric::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--orange);
+        }
+        .metric-n {
+            font-family: var(--hand); font-size: 4rem; font-weight: 700;
+            color: var(--orange); line-height: 1; display: block;
+        }
+        .metric-x { font-size: 2.2rem; }
+        .metric-l { font-size: 13px; color: var(--ink-muted); margin-top: 0.4rem; line-height: 1.4; }
 
-/* ── PHOTO GALLERY ── */
-.gallery-bg { background: var(--ink); padding: 4rem 3rem; }
-.gallery-inner { max-width: 1100px; margin: 0 auto; }
-.gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
-.gallery-title { font-family: var(--hand); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.2; }
-.gallery-sub { font-size: 13px; color: rgba(255,255,255,0.4); text-align: right; max-width: 260px; line-height: 1.5; }
-.gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
-.gallery-item {
-  border-radius: 3px; overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.1);
-  transition: transform 0.2s, border-color 0.2s;
-  aspect-ratio: 4/3; background: var(--bg2);
-}
-.gallery-item:hover { transform: translateY(-4px); border-color: var(--orange); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: filter 0.2s; }
-.gallery-item:hover img { filter: saturate(1); }
+        /* ── PHOTO GALLERY ── */
+        .gallery-bg { background: var(--ink); padding: 4rem 3rem; }
+        .gallery-inner { max-width: 1100px; margin: 0 auto; }
+        .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+        .gallery-title { font-family: var(--hand); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.2; }
+        .gallery-sub { font-size: 13px; color: rgba(255,255,255,0.4); text-align: right; max-width: 260px; line-height: 1.5; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+        .gallery-item {
+            border-radius: 3px; overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s, border-color 0.2s;
+            aspect-ratio: 4/3; background: var(--bg2);
+        }
+        .gallery-item:hover { transform: translateY(-4px); border-color: var(--orange); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85); transition: filter 0.2s; }
+        .gallery-item:hover img { filter: saturate(1); }
 
-/* ── TWO COL ── */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; align-items: start; }
+        /* ── TWO COL ── */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; align-items: start; }
 
-/* ── GROWTH LOOP ── */
-.loop-wrap {
-  display: flex; align-items: center; gap: 0;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-.loop-node {
-  background: var(--white);
-  border: 2px solid var(--ink);
-  border-radius: 3px;
-  padding: 0.75rem 1.25rem;
-  box-shadow: 3px 3px 0 var(--ink);
-  font-family: var(--hand); font-size: 19px; font-weight: 600;
-  color: var(--ink); white-space: nowrap;
-}
-.loop-arrow {
-  font-size: 22px; color: var(--orange);
-  padding: 0 0.5rem;
-  font-weight: 700;
-}
-.loop-node.highlight { background: var(--orange); color: var(--white); border-color: var(--orange); box-shadow: 3px 3px 0 var(--ink); }
+        /* ── GROWTH LOOP ── */
+        .loop-wrap {
+            display: flex; align-items: center; gap: 0;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .loop-node {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 3px;
+            padding: 0.75rem 1.25rem;
+            box-shadow: 3px 3px 0 var(--ink);
+            font-family: var(--hand); font-size: 19px; font-weight: 600;
+            color: var(--ink); white-space: nowrap;
+        }
+        .loop-arrow {
+            font-size: 22px; color: var(--orange);
+            padding: 0 0.5rem;
+            font-weight: 700;
+        }
+        .loop-node.highlight { background: var(--orange); color: var(--white); border-color: var(--orange); box-shadow: 3px 3px 0 var(--ink); }
 
-/* ── ROLE ITEMS ── */
-.role-list { display: flex; flex-direction: column; gap: 0; border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; box-shadow: 4px 4px 0 var(--ink); margin-top: 1.5rem; }
-.role-item {
-  display: flex; align-items: center; gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--white);
-  border-bottom: 1px dashed var(--border);
-  transition: background 0.15s;
-}
-.role-item:last-child { border-bottom: none; }
-.role-item:hover { background: var(--orange-pale); }
-.role-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
-.role-text { font-size: 14px; color: var(--ink2); line-height: 1.4; }
+        /* ── ROLE ITEMS ── */
+        .role-list { display: flex; flex-direction: column; gap: 0; border: 2px solid var(--ink); border-radius: 4px; overflow: hidden; box-shadow: 4px 4px 0 var(--ink); margin-top: 1.5rem; }
+        .role-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--white);
+            border-bottom: 1px dashed var(--border);
+            transition: background 0.15s;
+        }
+        .role-item:last-child { border-bottom: none; }
+        .role-item:hover { background: var(--orange-pale); }
+        .role-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+        .role-text { font-size: 14px; color: var(--ink2); line-height: 1.4; }
 
-/* ── MANIFESTO SECTION ── */
-.manifesto-bg { background: var(--bg2); padding: 4rem 3rem; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
-.manifesto-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.manifesto-img {
-  border: 2px solid var(--ink);
-  border-radius: 4px;
-  box-shadow: 6px 6px 0 var(--ink);
-  overflow: hidden;
-}
-.manifesto-img img { width: 100%; display: block; }
-.manifesto-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
-.manifesto-body { font-size: 15px; color: var(--ink-muted); line-height: 1.85; margin-top: 1rem; }
+        /* ── MANIFESTO SECTION ── */
+        .manifesto-bg { background: var(--bg2); padding: 4rem 3rem; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+        .manifesto-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .manifesto-img {
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            box-shadow: 6px 6px 0 var(--ink);
+            overflow: hidden;
+        }
+        .manifesto-img img { width: 100%; display: block; }
+        .manifesto-text h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+        .manifesto-body { font-size: 15px; color: var(--ink-muted); line-height: 1.85; margin-top: 1rem; }
 
-/* ── INSIGHT CLOSER ── */
-.insight {
-  background: var(--ink);
-  padding: 5rem 3rem;
-}
-.insight-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.insight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
-.insight-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--orange); }
-.insight-quote {
-  font-family: var(--hand);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.25;
-}
-.insight-body { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.85; }
-.insight-body + .insight-body { margin-top: 1rem; }
+        /* ── INSIGHT CLOSER ── */
+        .insight {
+            background: var(--orange);
+            padding: 5rem 3rem;
+        }
+        .insight-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .insight-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(26,26,24,0.7); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
+        .insight-label::before { content: ''; display: block; width: 20px; height: 2px; background: rgba(26,26,24,0.7); }
+        .insight-quote {
+            font-family: var(--hand);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+        }
+        .insight-body { font-size: 15px; color: rgba(26,26,24,0.72); line-height: 1.85; }
+        .insight-body + .insight-body { margin-top: 1rem; }
 
-/* ── FOOTER ── */
-footer {
-  border-top: 2px solid var(--orange);
-  padding: 2rem 3rem;
-  max-width: 1100px; margin: 0 auto;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-name { font-family: var(--hand); font-size: 18px; color: var(--ink-muted); }
-.footer-link { font-family: var(--hand); font-size: 18px; color: var(--orange); text-decoration: none; border-bottom: 1.5px solid var(--orange-light); padding-bottom: 1px; }
+        .insight-card {
+            background: var(--white);
+            border: 2px solid var(--ink);
+            border-radius: 4px;
+            padding: 2rem;
+            box-shadow: 5px 5px 0 var(--ink);
+        }
 
-/* ── SKETCH DIVIDER ── */
-.sketch-divider { text-align: center; padding: 1rem 0; overflow: hidden; }
-.sketch-divider svg { width: 100%; max-height: 32px; opacity: 0.15; }
+        .insight-card.quote {
+            transform: rotate(-1deg);
+        }
 
-/* ── ANIM ── */
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-.fade { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s ease forwards; }
-.fade:nth-child(1) { animation-delay: 0.1s; }
-.fade:nth-child(2) { animation-delay: 0.25s; }
-.fade:nth-child(3) { animation-delay: 0.4s; }
-.fade:nth-child(4) { animation-delay: 0.55s; }
+        .insight-card.text {
+            transform: rotate(1deg);
+        }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  nav { padding: 0.75rem 1.5rem; }
-  .hero, .two-col, .manifesto-inner, .insight-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .hero { padding: 7rem 1.5rem 3rem; }
-  .section { padding: 3.5rem 1.5rem; }
-  .metrics { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .gallery-bg, .manifesto-bg, .insight { padding: 3rem 1.5rem; }
-  footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
-  .loop-wrap { gap: 0.25rem; }
-}
-</style>
+        /* ── FOOTER ── */
+        footer {
+            border-top: 2px solid var(--orange);
+            padding: 2rem 3rem;
+            max-width: 1100px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .footer-name { font-family: var(--hand); font-size: 18px; color: var(--ink-muted); }
+        .footer-link { font-family: var(--hand); font-size: 18px; color: var(--orange); text-decoration: none; border-bottom: 1.5px solid var(--orange-light); padding-bottom: 1px; }
+
+        /* ── SKETCH DIVIDER ── */
+        .sketch-divider { text-align: center; padding: 1rem 0; overflow: hidden; }
+        .sketch-divider svg { width: 100%; max-height: 32px; opacity: 0.15; }
+
+        /* ── ANIM ── */
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .fade { opacity: 0; transform: translateY(20px); animation: fadeUp 0.7s ease forwards; }
+        .fade:nth-child(1) { animation-delay: 0.1s; }
+        .fade:nth-child(2) { animation-delay: 0.25s; }
+        .fade:nth-child(3) { animation-delay: 0.4s; }
+        .fade:nth-child(4) { animation-delay: 0.55s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 0.75rem 1.5rem; }
+            .hero, .two-col, .manifesto-inner, .insight-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .section { padding: 3.5rem 1.5rem; }
+            .metrics { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-bg, .manifesto-bg, .insight { padding: 3rem 1.5rem; }
+            footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; }
+            .loop-wrap { gap: 0.25rem; }
+        }
+    </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <img src="logo.png" alt="Urban Sketchers Paphos" style="height:60px;width:auto;">
-  <span class="nav-label">Community Case Study</span>
+    <img src="logo.png" alt="Urban Sketchers Paphos" style="height:60px;width:auto;">
+    <span class="nav-label">Community Case Study</span>
 </nav>
 
 <!-- HERO -->
 <div style="max-width:1100px;margin:0 auto;padding:8rem 3rem 5rem;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center;" class="hero-wrap">
-  <div>
-    <div class="hero-tag fade">Community Growth Case</div>
-    <h1 class="fade" style="font-family:'Caveat',cursive;font-size:clamp(3rem,6vw,5rem);font-weight:700;line-height:1.05;color:#1a1a18;margin-bottom:1.5rem;">Built from <span style="color:#e8720c">zero</span>.<br>Grew by <span style="color:#e8720c">10×</span>.<br>Put Paphos<br>on the map.</h1>
-    <p class="fade" style="font-size:16px;color:#7a7668;line-height:1.85;max-width:460px;">How a local sketching community was founded, branded, grown, and turned into a chapter of the global Urban Sketchers network — through community strategy, event production, and consistent creative identity.</p>
-  </div>
-  <div class="hero-card fade">
-    <div class="card-row"><span class="card-key">Project</span><span class="card-val">Urban Sketchers Paphos</span></div>
-    <div class="card-row"><span class="card-key">Type</span><span class="card-val">Community build & brand — from zero</span></div>
-    <div class="card-row"><span class="card-key">Role</span><span class="card-val">Founder, Brand, Marketing & Events</span></div>
-    <div class="card-row"><span class="card-key">Network</span><span class="card-val">Official chapter · Global Urban Sketchers</span></div>
-    <div class="card-row"><span class="card-key">Location</span><span class="card-val">Paphos, Cyprus</span></div>
-  </div>
+    <div>
+        <div class="hero-tag fade">Community Growth Case</div>
+        <h1 class="fade" style="font-family:'Caveat',cursive;font-size:clamp(3rem,6vw,5rem);font-weight:700;line-height:1.05;color:#1a1a18;margin-bottom:1.5rem;">Built from <span style="color:#e8720c">zero</span>.<br>Grew by <span style="color:#e8720c">10×</span>.<br>Put Paphos<br>on the map.</h1>
+        <p class="fade" style="font-size:16px;color:#7a7668;line-height:1.85;max-width:460px;">How a local sketching community was founded, branded, grown, and turned into a chapter of the global Urban Sketchers network — through community strategy, event production, and consistent creative identity.</p>
+    </div>
+    <div class="hero-card fade">
+        <div class="card-row"><span class="card-key">Project</span><span class="card-val">Urban Sketchers Paphos</span></div>
+        <div class="card-row"><span class="card-key">Type</span><span class="card-val">Community build & brand — from zero</span></div>
+        <div class="card-row"><span class="card-key">Role</span><span class="card-val">Founder, Brand, Marketing & Events</span></div>
+        <div class="card-row"><span class="card-key">Network</span><span class="card-val">Official chapter · Global Urban Sketchers</span></div>
+        <div class="card-row"><span class="card-key">Location</span><span class="card-val">Paphos, Cyprus</span></div>
+    </div>
 </div>
 
 <!-- STRIPE -->
 <div class="stripe">
-  <p class="stripe-quote">"People don't join communities for content.<br>They join for identity and shared experience."</p>
-  <span class="stripe-sub">Key insight from this project</span>
+    <p class="stripe-quote">"People don't join communities for content.<br>They join for identity and shared experience."</p>
+    <span class="stripe-sub">Key insight from this project</span>
 </div>
 
 <!-- METRICS -->
 <div class="section">
-  <span class="s-tag">Results</span>
-  <h2>What community-led growth looks like</h2>
-  <p class="body" style="max-width:540px">All growth was organic — no paid acquisition. Built entirely through events, creative identity, and word-of-mouth within the local community.</p>
-  <div class="metrics">
-    <div class="metric">
-      <span class="metric-n"><span data-target="10">0</span><span class="metric-x">×</span></span>
-      <div class="metric-l">Community growth in year one</div>
+    <span class="s-tag">Results</span>
+    <h2>What community-led growth looks like</h2>
+    <p class="body" style="max-width:620px">All growth was organic — no paid acquisition. Built through recurring participation, events, creative identity, partnerships, and word-of-mouth within the local community.</p>
+    <div class="metrics">
+        <div class="metric">
+            <span class="metric-n"><span data-target="10">0</span><span class="metric-x">×</span></span>
+            <div class="metric-l">Community growth in year one</div>
+        </div>
+        <div class="metric">
+            <span class="metric-n"><span data-target="200">0</span><span class="metric-x">+</span></span>
+            <div class="metric-l">Events</div>
+        </div>
+        <div class="metric">
+            <span class="metric-n" style="font-size:2.4rem;">Global</span>
+            <div class="metric-l">Official chapter · Urban Sketchers</div>
+        </div>
+        <div class="metric">
+            <span class="metric-n" style="font-size:2.4rem;">Network</span>
+            <div class="metric-l">Local artist & community collaborations</div>
+        </div>
     </div>
-    <div class="metric">
-      <span class="metric-n"><span data-target="300">0</span><span class="metric-x">+</span></span>
-      <div class="metric-l">Visitors to the exhibition</div>
-    </div>
-    <div class="metric">
-      <span class="metric-n" style="font-size:2.8rem;">Global</span>
-      <div class="metric-l">Registered chapter · Urban Sketchers International</div>
-    </div>
-    <div class="metric">
-      <span class="metric-n" style="font-size:2.8rem;">Press</span>
-      <div class="metric-l">Local media coverage of events and exhibition</div>
-    </div>
-  </div>
 </div>
 
 <!-- PHOTOS -->
 <div class="gallery-bg">
-  <div class="gallery-inner">
-    <div class="gallery-header">
-      <div class="gallery-title">Sketch walks,<br>workshops & exhibition</div>
-      <div class="gallery-sub">Events were the core growth engine — not content, not ads</div>
+    <div class="gallery-inner">
+        <div class="gallery-header">
+            <div class="gallery-title">Sketch walks,<br>workshops & exhibition</div>
+            <div class="gallery-sub">Events were the core growth engine — not content, not ads</div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="event1.jpg" alt="Sketch workshop session"></div>
+            <div class="gallery-item"><img src="event2.jpg" alt="Outdoor sketch walk"></div>
+            <div class="gallery-item"><img src="event3.jpg" alt="Exhibition opening"></div>
+        </div>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="event1.jpg" alt="Sketch workshop session"></div>
-      <div class="gallery-item"><img src="event2.jpg" alt="Outdoor sketch walk"></div>
-      <div class="gallery-item"><img src="event3.jpg" alt="Exhibition opening"></div>
-    </div>
-  </div>
 </div>
 
 <!-- STRATEGY + ROLE -->
 <div class="section">
-  <span class="s-tag">Growth Strategy</span>
-  <h2>How a community is actually built</h2>
-  <div class="two-col">
-    <div>
-      <p class="body">Starting point: zero audience, zero visibility, zero existing sketching culture in the city.</p>
-      <p class="body">The strategy wasn't to build a following — it was to create a recurring shared experience that people wanted to be part of. Events drove discovery. Identity made people stay. The global network gave it legitimacy.</p>
-      <p style="font-family:'Caveat',cursive;font-size:17px;color:#7a7668;margin-top:1.5rem;margin-bottom:0.75rem;">Growth loop →</p>
-      <div class="loop-wrap">
-        <div class="loop-node highlight">Event</div>
+    <span class="s-tag">Growth Strategy</span>
+    <h2>How a community is actually built</h2>
+
+
+            <p class="body">
+                Starting point: zero audience, zero visibility, zero existing sketching culture in the city.
+            </p>
+
+            <p class="body">
+                The strategy wasn't to build a following — it was to create a recurring shared experience that people wanted to be part of.
+            </p>
+
+            <p class="body">
+                Growth became a byproduct of repeat participation, not the primary goal.
+            </p>
+
+            <p class="body">
+                Events, workshops, artist talks, sketch trips, collaborations, and exhibitions created multiple ways for people to participate and stay involved over time.
+            </p>
+</div>
+
+<!-- PARTICIPATION TO BELONGING -->
+<div class="section">
+    <span class="s-tag">Retention Dynamics</span>
+    <h2>From participation to belonging</h2>
+
+    <div class="loop-wrap">
+        <div class="loop-node highlight">Discovery</div>
         <div class="loop-arrow">→</div>
-        <div class="loop-node">Content</div>
+        <div class="loop-node">Participation</div>
         <div class="loop-arrow">→</div>
-        <div class="loop-node">Visibility</div>
+        <div class="loop-node">Belonging</div>
         <div class="loop-arrow">→</div>
-        <div class="loop-node">New members</div>
+        <div class="loop-node">Contribution</div>
         <div class="loop-arrow">→</div>
-        <div class="loop-node highlight">Next event</div>
-      </div>
+        <div class="loop-node highlight">Advocacy</div>
     </div>
-    <div>
-      <p style="font-family:'Caveat',cursive;font-size:17px;color:#7a7668;margin-bottom:0.5rem;">What I owned →</p>
-      <div class="role-list">
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Founded the community and registered it as an official global chapter</span></div>
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Developed full brand identity: logo, visual language, print materials, merch</span></div>
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Planned and ran regular sketch walks, workshops, and off-site events</span></div>
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Produced and curated the "Paphos and Around" exhibition at Third Space Art Center</span></div>
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Built local media presence and partnerships with galleries and art figures</span></div>
-        <div class="role-item"><span class="role-dot"></span><span class="role-text">Managed all social content, community communications, and online presence</span></div>
-      </div>
+    <br>
+    <p class="body" style="max-width:760px;">
+        People came to sketch and to meet other people, learn something new, or simply have somewhere to go in a new country.
+    </p>
+
+    <p class="body" style="max-width:760px;">
+        Over time, participation evolved into belonging. Regular members started contributing ideas, bringing friends, helping organize events, and shaping the culture of the community itself.
+    </p>
+</div>
+
+<!-- ENVIRONMENT AS PRODUCT -->
+<div class="manifesto-bg">
+    <div class="manifesto-inner" style="grid-template-columns:1fr;gap:0;">
+        <div class="manifesto-text" style="max-width:760px;">
+            <span class="s-tag">Community Design</span>
+            <h2>Environment as a product</h2>
+
+            <p class="manifesto-body">
+                The challenge wasn't only attracting people — it was creating conditions that made participation for both beginners and professional artists feel easy, meaningful, and worth returning to.
+            </p>
+
+            <p class="manifesto-body">
+                The community functioned as a dedicated environment for creative focus, social connection, and shared identity outside daily routine.
+            </p>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- MANIFESTO -->
 <div class="manifesto-bg">
-  <div class="manifesto-inner">
-    <div class="manifesto-img">
-      <img src="manifesto.png" alt="Urban Sketchers Paphos Manifesto">
+    <div class="manifesto-inner">
+        <div class="manifesto-img">
+            <img src="manifesto.png" alt="Urban Sketchers Paphos Manifesto">
+        </div>
+        <div class="manifesto-text">
+            <span class="s-tag">Brand Identity</span>
+            <h2>Visual identity built<br>from scratch</h2>
+            <p class="manifesto-body">Brand identity was developed to reflect the community's values: direct observation, honest drawing, shared presence. The visual language — black liner sketch style with orange accents — was applied consistently across digital content, print materials, merchandise, and event production.</p>
+            <p class="manifesto-body">The manifesto wasn't written by me — it belongs to the global Urban Sketchers movement. But bringing it to life visually, and making it feel local and owned, was the brand challenge.</p>
+        </div>
     </div>
-    <div class="manifesto-text">
-      <span class="s-tag">Brand Identity</span>
-      <h2>Visual identity built<br>from scratch</h2>
-      <p class="manifesto-body">Brand identity was developed to reflect the community's values: direct observation, honest drawing, shared presence. The visual language — black liner sketch style with orange accents — was applied consistently across digital content, print materials, merchandise, and event production.</p>
-      <p class="manifesto-body">The manifesto wasn't written by me — it belongs to the global Urban Sketchers movement. But bringing it to life visually, and making it feel local and owned, was the brand challenge.</p>
+</div>
+
+<!-- TIMELINE -->
+<div class="section">
+    <span class="s-tag">Timeline</span>
+    <h2>How the community evolved</h2>
+
+    <div class="role-list">
+
+        <div class="role-item">
+            <span class="role-dot"></span>
+            <span class="role-text"><strong>Feb 2023</strong> — Launch in Paphos</span>
+        </div>
+
+        <div class="role-item">
+            <span class="role-dot"></span>
+            <span class="role-text"><strong>2023</strong> — Weekly events</span>
+        </div>
+
+        <div class="role-item">
+            <span class="role-dot"></span>
+            <span class="role-text"><strong>2024</strong> — Registered as official chapter of worldwide Urban Sketchers</span>
+        </div>
+
+        <div class="role-item">
+            <span class="role-dot"></span>
+            <span class="role-text"><strong>2024</strong> — Collaborations with other communities and artists</span>
+        </div>
+
+        <div class="role-item">
+            <span class="role-dot"></span>
+            <span class="role-text"><strong>Dec 2024 – Jan 2025</strong> — “Paphos and Around” exhibition</span>
+        </div>
+
     </div>
-  </div>
+</div>
+
+<!-- EXHIBITION -->
+<div class="gallery-bg">
+    <div class="gallery-inner">
+
+        <div class="gallery-header" style="align-items:flex-start;">
+            <div>
+                <div class="gallery-title">From meetups<br>to exhibition</div>
+
+                <p style="font-family:'Caveat',cursive;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:#fff;line-height:1.3;margin-top:1.5rem;max-width:720px;">
+                    “People who joined the meetups as learners left the exhibition as exhibiting artists.”
+                </p>
+            </div>
+        </div>
+
+        <div style="max-width:760px;margin-top:2rem;">
+            <p class="insight-body" style="color:rgba(255,255,255,0.72);">
+                “Paphos and Around” became the community’s largest project and a public milestone for the community.
+            </p>
+
+            <p class="insight-body" style="color:rgba(255,255,255,0.72);">
+                For most exhibitors, it was their first time presenting work publicly. What started as casual participation evolved into creative confidence, visibility, and professional recognition.
+            </p>
+
+            <p class="insight-body" style="color:rgba(255,255,255,0.72);">
+                Multiple media outlets covered the exhibition organically, helping drive attendance and extend the exhibition twice. Community members also sold original works and merchandise during the event.
+            </p>
+        </div>
+
+        <div class="metrics" style="margin-top:3rem;">
+
+            <div class="metric">
+                <span class="metric-n" style="font-size:3.2rem;">100+</span>
+                <div class="metric-l">Exhibited works</div>
+            </div>
+
+            <div class="metric">
+                <span class="metric-n" style="font-size:3.2rem;">300+</span>
+                <div class="metric-l">Visitors</div>
+            </div>
+
+            <div class="metric">
+                <span class="metric-n" style="font-size:3.2rem;">5×</span>
+                <div class="metric-l">ROI</div>
+            </div>
+
+            <div class="metric">
+                <span class="metric-n" style="font-size:2rem;">1,5 months</span>
+                <div class="metric-l">Extended twice</div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
 <!-- INSIGHT -->
 <div class="insight">
-  <div class="insight-inner">
-    <div>
-      <div class="insight-label">Community Insight</div>
-      <p class="insight-quote">A community doesn't grow when you post more. It grows when people have something to show up for.</p>
+    <div class="insight-inner">
+
+        <div class="insight-card quote">
+            <div class="insight-label">Community Insight</div>
+
+            <p class="insight-quote">
+                A community doesn't grow when you post more. It grows when people have something to show up for.
+            </p>
+        </div>
+
+        <div class="insight-card text">
+            <p class="insight-body">
+                People contribute more when participation creates visibility, recognition, and meaningful connection with others — not just information exchange.
+            </p>
+        </div>
+
     </div>
-    <div>
-      <p class="insight-body">Every growth spike correlated with an event — not a post, not a campaign. The content was evidence of the experience, not a substitute for it.</p>
-      <p class="insight-body">This is directly applicable to developer community building: documentation, release notes, and forum activity matter — but nothing replaces a live event, a real conversation, or a shared creative act. The medium is the meeting.</p>
-    </div>
-  </div>
 </div>
 
 <footer>
-  <span class="footer-name">Tatiana Shelekhova — Marketing & Creative</span>
-  <a class="footer-link" href="https://www.linkedin.com/in/shelekhova-tatiana-138a1320" target="_blank">LinkedIn ↗</a>
+    <span class="footer-name">Tatiana Shelekhova — Marketing & Creative</span>
+    <a class="footer-link" href="https://www.linkedin.com/in/shelekhova-tatiana-138a1320" target="_blank">LinkedIn ↗</a>
 </footer>
 
 <script>
-function animateCounters() {
-  document.querySelectorAll('[data-target]').forEach(el => {
-    const target = parseInt(el.dataset.target);
-    const duration = 1000;
-    const start = performance.now();
-    function update(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * ease);
-      if (p < 1) requestAnimationFrame(update);
-      else el.textContent = target;
+    function animateCounters() {
+        document.querySelectorAll('[data-target]').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const duration = 1000;
+            const start = performance.now();
+            function update(now) {
+                const p = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * ease);
+                if (p < 1) requestAnimationFrame(update);
+                else el.textContent = target;
+            }
+            requestAnimationFrame(update);
+        });
     }
-    requestAnimationFrame(update);
-  });
-}
-const metrics = document.querySelector('.metrics');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); obs.disconnect(); } });
-}, { threshold: 0.3 });
-if (metrics) obs.observe(metrics);
+    const metrics = document.querySelector('.metrics');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { animateCounters(); obs.disconnect(); } });
+    }, { threshold: 0.3 });
+    if (metrics) obs.observe(metrics);
 </script>
 </body>
 </html>
